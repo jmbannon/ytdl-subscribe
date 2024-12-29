@@ -123,7 +123,7 @@ class YTDLP:
                 del copied_ytdl_options_overrides["download_archive"]
 
             if num_tries < cls._EXTRACT_ENTRY_NUM_RETRIES:
-                cls.logger.debug(
+                cls.logger.info(
                     "Failed to download entry. Retrying %d / %d",
                     num_tries,
                     cls._EXTRACT_ENTRY_NUM_RETRIES,
@@ -222,14 +222,18 @@ class YTDLP:
             ):
                 cls.extract_info(ytdl_options_overrides=ytdl_options_overrides, **kwargs)
         except RejectedVideoReached:
-            cls.logger.debug(
+            cls.logger.info(
                 "RejectedVideoReached, stopping additional downloads "
-                "(Can be disable by setting `date_range.breaking` to False)."
+                "(Can be disable by setting `date_range.breaks` to False. "
+                "If this is unexpected, "
+                "run with `--log-level verbose` to see the yt-dlp logs on why it stopped)"
             )
         except ExistingVideoReached:
-            cls.logger.debug(
+            cls.logger.info(
                 "ExistingVideoReached, stopping additional downloads. "
-                "(Can be disable by setting `ytdl_options.break_on_existing` to False)."
+                "(Can be disable by setting `ytdl_options.break_on_existing` to False. This will "
+                "force yt-dlp to continue scraping all metadata to grab any files you may have "
+                "missed)"
             )
         except MaxDownloadsReached:
             cls.logger.info("MaxDownloadsReached, stopping additional downloads.")
@@ -247,7 +251,7 @@ class YTDLP:
             if uploader_id in entry_ids or not (uploader_url := entry_dict.get("uploader_url")):
                 continue
 
-            cls.logger.debug("Attempting to get parent metadata from URL %s", uploader_url)
+            cls.logger.info("Attempting to get parent metadata from URL %s", uploader_url)
             parent_dict: Optional[Dict] = None
             try:
                 parent_dict = cls.extract_info(
