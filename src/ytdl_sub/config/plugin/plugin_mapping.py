@@ -23,6 +23,7 @@ from ytdl_sub.plugins.match_filters import MatchFiltersPlugin
 from ytdl_sub.plugins.music_tags import MusicTagsPlugin
 from ytdl_sub.plugins.nfo_tags import NfoTagsPlugin
 from ytdl_sub.plugins.output_directory_nfo_tags import OutputDirectoryNfoTagsPlugin
+from ytdl_sub.plugins.season_nfo_tags import SeasonNfoTagsPlugin
 from ytdl_sub.plugins.split_by_chapters import SplitByChaptersPlugin
 from ytdl_sub.plugins.subtitles import SubtitlesPlugin
 from ytdl_sub.plugins.throttle_protection import ThrottleProtectionPlugin
@@ -46,6 +47,7 @@ class PluginMapping:
         "video_tags": VideoTagsPlugin,
         "nfo_tags": NfoTagsPlugin,
         "output_directory_nfo_tags": OutputDirectoryNfoTagsPlugin,
+        "season_nfo_tags": SeasonNfoTagsPlugin,
         "subtitles": SubtitlesPlugin,
         "chapters": ChaptersPlugin,
         "split_by_chapters": SplitByChaptersPlugin,
@@ -83,6 +85,7 @@ class PluginMapping:
         MusicTagsPlugin,
         VideoTagsPlugin,
         NfoTagsPlugin,
+        SeasonNfoTagsPlugin,
         EmbedThumbnailPlugin,
     ]
 

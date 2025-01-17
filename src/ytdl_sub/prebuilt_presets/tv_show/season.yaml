@@ -1,0 +1,13 @@
+presets:
+
+####################################################################################################
+
+  _season_nfo_tags:
+    season_nfo_tags:
+      # required
+      nfo_name: "{season_directory_name_sanitized}/season.nfo"
+      nfo_root: "season"
+      tags:
+        title: "{collection_season_name}"
+      # optional
+      kodi_safe: False

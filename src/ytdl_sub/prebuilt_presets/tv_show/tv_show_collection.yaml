@@ -12,6 +12,8 @@ presets:
     preset:
       - "jellyfin_tv_show_collection"
       - "season_by_collection__episode_by_year_month_day"
+      # Jellyfin/Emby currently do not support reading the namedseason tag from tvshow.nfo and insted rely on a per-folder season.nfo
+      - "_season_nfo_tags"
 
   "Plex TV Show Collection":
     preset:
